@@ -14,7 +14,7 @@ const Hero = () => {
         <p className="mt-6 text-lg text-gray-600 max-w-lg">
           Can't afford 6 more techs? Server crashed? Migration failed? We answer in 15 minutes.
         </p>
-        <h2>name fgnjmk</h2>
+       
 
         <div className="mt-8 flex gap-4">
           <button className="bg-orange-500 text-white px-8 py-3 rounded-md font-semibold hover:bg-blue-700">
