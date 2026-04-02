@@ -3,20 +3,20 @@ import React from "react";
 const Services = () => {
   const services = [
     {
-      title: "Cloud Management",
-      desc: "End-to-end cloud monitoring and optimization services.",
+      title: "Getting Started",
+      desc: "Pricing takes 5 minutes.Onboarding takes two weeks.No Contracts.",
     },
     {
-      title: "Cybersecurity",
-      desc: "Protect your infrastructure with advanced security solutions.",
+      title: "Managed IT Services",
+      desc: "Helpdesk,monitoring,and patching.Under your logo.Billed to you",
     },
     {
-      title: "DevOps",
-      desc: "Automate and streamline your deployment pipelines.",
+      title: "NOC & SOC Services",
+      desc: "We watch your client's networks 24/7.Threats gets stopped.You get the credit.",
     },
     {
-      title: "24/7 Support",
-      desc: "Round-the-clock support for all your cloud operations.",
+      title: "Staff Augmentation",
+      desc: "Need a Windows admin for 10 hours? Hire ours.Invoice your client.We handle payroll.",
     },
   ];
 
