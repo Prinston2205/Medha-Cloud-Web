@@ -7,6 +7,9 @@ import Cloud from "./Components/cloud";
 import Hosting from "./Components/hosting";
 import Professional from "./Components/professional";
 import WhatWeDo from "./Components/whatwedo";
+import ClientStories from "./Components/clientstories";
+import IndustryAndCTA from "./Components/industryandcta";
+import Footer from "./Components/footer";
 
 function App() {
   return (
@@ -19,6 +22,9 @@ function App() {
       <Hosting />
       <Professional />
       <WhatWeDo />
+      <ClientStories />
+      <IndustryAndCTA />
+      <Footer />
     </div>
   );
 }
