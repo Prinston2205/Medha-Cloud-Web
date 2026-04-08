@@ -1,4 +1,6 @@
 import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import TopBar from "./Components/topbar";
 import Navbar from "./Components/navbar";
 import Hero from "./Components/hero";
@@ -10,12 +12,20 @@ import WhatWeDo from "./Components/whatwedo";
 import ClientStories from "./Components/clientstories";
 import IndustryAndCTA from "./Components/industryandcta";
 import Footer from "./Components/footer";
+import WhiteLabelMSP from "./Pages/whitelabelmsp";
 
-function App() {
+// ✅ PAGES
+import WhiteLabelPage from "./Pages/whitelabelpage";
+import CloudPage from "./Pages/cloudpage";
+import ProfessionalPage from "./Pages/professionalpage";
+import CompanyPage from "./Pages/companypage";
+// import CloudServicesPage from "./Pages/cloudservicepage";
+
+
+// 👉 HOME PAGE COMBINED
+const HomePage = () => {
   return (
-    <div className="font-sans">
-      <TopBar />
-      <Navbar />
+    <>
       <Hero />
       <Services />
       <Cloud />
@@ -24,8 +34,33 @@ function App() {
       <WhatWeDo />
       <ClientStories />
       <IndustryAndCTA />
-      <Footer />
-    </div>
+    </>
+  );
+};
+
+function App() {
+  return (
+    <BrowserRouter>
+      <div className="font-sans">
+        <TopBar />
+        <Navbar />
+
+        <Routes>
+          {/* HOME PAGE */}
+          <Route path="/" element={<HomePage />} />
+
+          {/* ALL DROPDOWN ROUTES */}
+          <Route path="/whiteLabel" element={<WhiteLabelMSP />} />
+          <Route path="/cloud" element={<CloudPage />} />
+          <Route path="/professional" element={<ProfessionalPage />} />
+          <Route path="/company" element={<CompanyPage />} />
+          {/* <Route path="/cloudh" element={<CloudServicesPage />} /> */}
+          
+        </Routes>
+
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 
