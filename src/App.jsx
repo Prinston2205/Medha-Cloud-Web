@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+// ✅Home Page 
 import TopBar from "./Components/topbar";
 import Navbar from "./Components/navbar";
 import Hero from "./Components/hero";
@@ -54,8 +55,6 @@ function App() {
           <Route path="/cloud" element={<CloudPage />} />
           <Route path="/proFessional" element={<ProfessionalPage />} />
           <Route path="/company" element={<CompanyPage />} />
-          {/* <Route path="/cloudh" element={<CloudServicesPage />} /> */}
-          
         </Routes>
 
         <Footer />

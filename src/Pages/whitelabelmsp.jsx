@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ROICalculator from "../Components/RoiCalculator";
 import {
   Check,
   Server,
@@ -239,11 +240,10 @@ const WhiteLabelMSP = () => {
           {data.pricing.map((plan, i) => (
             <div
               key={i}
-              className={`bg-white border rounded-xl p-6 transition-all ${
-                plan.recommended
+              className={`bg-white border rounded-xl p-6 transition-all ${plan.recommended
                   ? "border-2 border-blue-600 shadow-lg scale-105"
                   : "border-gray-100 hover:shadow-xl"
-              }`}
+                }`}
             >
               {plan.recommended && (
                 <div className="text-blue-600 text-sm mb-2 font-medium">
@@ -274,7 +274,12 @@ const WhiteLabelMSP = () => {
             </div>
           ))}
         </div>
+
+
+
       </section>
+
+      <ROICalculator />
 
     </div>
   );

@@ -27,11 +27,10 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`sticky top-0 z-50 bg-white transition-all duration-300 ${
-        scrolled
+      className={`sticky top-0 z-50 bg-white transition-all duration-300 ${scrolled
           ? "shadow-[0_2px_8px_rgba(0,0,0,0.06)]"
           : "border-b border-gray-200"
-      }`}
+        }`}
     >
       <div
         className="max-w-7xl mx-auto flex items-center justify-between px-6 lg:px-16 py-4 relative"
