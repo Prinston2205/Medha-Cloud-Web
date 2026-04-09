@@ -50,9 +50,9 @@ function App() {
           <Route path="/" element={<HomePage />} />
 
           {/* ALL DROPDOWN ROUTES */}
-          <Route path="/whiteLabel" element={<WhiteLabelMSP />} />
+          <Route path="/whitelabel" element={<WhiteLabelMSP />} />
           <Route path="/cloud" element={<CloudPage />} />
-          <Route path="/professional" element={<ProfessionalPage />} />
+          <Route path="/proFessional" element={<ProfessionalPage />} />
           <Route path="/company" element={<CompanyPage />} />
           {/* <Route path="/cloudh" element={<CloudServicesPage />} /> */}
           

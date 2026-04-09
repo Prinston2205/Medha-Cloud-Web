@@ -1,84 +1,246 @@
 import { motion } from "framer-motion";
-import { Server, Cloud, Briefcase, Building, Download } from "lucide-react";
+import {
+  Server,
+  Cloud,
+  Briefcase,
+  Building,
+  Download,
+  Users,
+  ShieldCheck,
+  Settings,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 
-const menuConfig = {
+/* ================= THEME SYSTEM ================= */
+const themes = {
   whiteLabel: {
-    icon: Server,
-    title: "White Label Guide",
-    desc: "Scale your MSP business",
+    bg: "bg-blue-600",
+    light: "bg-blue-50",
+    text: "text-blue-600",
   },
   cloud: {
-    icon: Cloud,
-    title: "Cloud Guide",
-    desc: "Explore cloud solutions",
+    bg: "bg-orange-500",
+    light: "bg-orange-50",
+    text: "text-orange-500",
   },
   professional: {
-    icon: Briefcase,
-    title: "Professional Services",
-    desc: "Grow your business",
+    bg: "bg-green-600",
+    light: "bg-green-50",
+    text: "text-green-600",
   },
   company: {
-    icon: Building,
-    title: "Company Overview",
-    desc: "Know about us",
+    bg: "bg-blue-600",
+    light: "bg-blue-50",
+    text: "text-blue-600",
   },
 };
 
+/* ================= CONTENT ================= */
+const menuConfig = {
+  whiteLabel: {
+    links: [
+      {
+        title: "Getting Started",
+        desc: "Kickstart your MSP journey",
+        icon: Server,
+      },
+      {
+        title: "Why Partner With Us",
+        desc: "Grow your MSP business",
+        icon: Users,
+      },
+      {
+        title: "Managed Services",
+        desc: "End-to-end IT support",
+        icon: Settings,
+      },
+      {
+        title: "Staff Augmentation",
+        desc: "Scale your team",
+        icon: Briefcase,
+      },
+    ],
+    card: {
+      icon: Server,
+      title: "MSP Services Guide",
+      desc: "Scale your MSP business efficiently",
+      button: "Download Guide",
+    },
+  },
+
+  cloud: {
+    links: [
+      {
+        title: "Hosting Solutions",
+        desc: "Reliable cloud hosting",
+        icon: Cloud,
+      },
+      {
+        title: "Microsoft Solutions",
+        desc: "Azure & M365 services",
+        icon: Server,
+      },
+      {
+        title: "Specialty Hosting",
+        desc: "Custom hosting infra",
+        icon: Settings,
+      },
+      {
+        title: "Security & Compliance",
+        desc: "Secure cloud operations",
+        icon: ShieldCheck,
+      },
+    ],
+    card: {
+      icon: Cloud,
+      title: "Cloud Solutions",
+      desc: "Innovative cloud strategies",
+      button: "Get Guide",
+    },
+  },
+
+  professional: {
+    links: [
+      {
+        title: "Server Support",
+        desc: "Reliable server maintenance",
+        icon: Server,
+      },
+      {
+        title: "IT Services",
+        desc: "Complete IT solutions",
+        icon: Settings,
+      },
+      {
+        title: "IT Consulting",
+        desc: "Expert guidance",
+        icon: Briefcase,
+      },
+      {
+        title: "Cloud Migrations",
+        desc: "Smooth transitions",
+        icon: Cloud,
+      },
+    ],
+    card: {
+      icon: Briefcase,
+      title: "IT Services Roadmap",
+      desc: "Plan your IT growth",
+      button: "Download",
+    },
+  },
+
+  company: {
+    links: [
+      {
+        title: "About Us",
+        desc: "Learn about our company",
+        icon: Building,
+      },
+      {
+        title: "Careers",
+        desc: "Join our team",
+        icon: Users,
+      },
+      {
+        title: "Support",
+        desc: "Get help anytime",
+        icon: ShieldCheck,
+      },
+      {
+        title: "Resources",
+        desc: "Explore materials",
+        icon: Settings,
+      },
+    ],
+    card: {
+      icon: Building,
+      title: "Company Overview",
+      desc: "Know more about us",
+      button: "Learn More",
+    },
+  },
+};
+
+/* ================= COMPONENT ================= */
 const MegaMenu = ({ type }) => {
   const data = menuConfig[type];
-  if (!data) return null;
+  const theme = themes[type];
 
-  const Icon = data.icon;
+  if (!data) return null;
 
   return (
     <motion.div
       initial={{ opacity: 0, y: -15 }}
       animate={{ opacity: 1, y: 0 }}
-      className="absolute top-full left-0 w-screen bg-white shadow-2xl z-50"
+      className="absolute top-full left-0 w-full bg-white shadow-2xl border-t border-slate-200 z-50"
     >
-      <div className="max-w-7xl mx-auto px-10 py-10 grid grid-cols-3 gap-10">
+      <div className="max-w-7xl mx-auto px-10 py-8">
 
-        {/* COLUMN 1 */}
-        <div>
-          <h3 className="font-semibold mb-4 text-sm">{type.toUpperCase()}</h3>
+        {/* GRID */}
+        <div className="grid grid-cols-12 gap-6">
 
-          <ul className="space-y-3">
-            <Link to={`/${type}`} className="block text-sm hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded-md">
-              Service 1
-            </Link>
-            <Link to={`/${type}`} className="block text-sm hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded-md">
-              Service 2
-            </Link>
-          </ul>
+          {/* LEFT SIDE (LINKS) */}
+          <div className="col-span-8 grid grid-cols-2 gap-4">
+
+            {data.links.map((item, i) => {
+              const Icon = item.icon;
+
+              return (
+                <Link
+                  key={i}
+                  to={`/${type}`}
+                  className="flex items-start gap-4 p-4 rounded-lg hover:bg-slate-50 transition"
+                >
+                  {/* ICON */}
+                  <div
+                    className={`w-10 h-10 flex items-center justify-center rounded-lg ${theme.light}`}
+                  >
+                    <Icon className={`w-5 h-5 ${theme.text}`} />
+                  </div>
+
+                  {/* TEXT */}
+                  <div>
+                    <h4 className="text-[15px] font-bold text-slate-800">
+                      {item.title}
+                    </h4>
+                    <p className="text-xs text-slate-500 leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+                </Link>
+              );
+            })}
+
+          </div>
+
+          {/* RIGHT SIDE CARD */}
+          <div className="col-span-4">
+            <div
+              className={`${theme.bg} h-full rounded-2xl p-6 flex flex-col justify-between`}
+            >
+              <div>
+                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-4">
+                  <data.card.icon className="text-white w-6 h-6" />
+                </div>
+
+                <h3 className="text-white text-lg font-bold mb-2">
+                  {data.card.title}
+                </h3>
+
+                <p className="text-white/80 text-sm">
+                  {data.card.desc}
+                </p>
+              </div>
+
+              <button className="mt-6 bg-white text-black text-sm font-medium px-4 py-2 rounded-lg flex items-center gap-2 hover:opacity-90 transition w-fit">
+                <Download size={16} />
+                {data.card.button}
+              </button>
+            </div>
+          </div>
+
         </div>
-
-        {/* COLUMN 2 */}
-        <div>
-          <h3 className="font-semibold mb-4 text-sm">Solutions</h3>
-
-          <ul className="space-y-3">
-            <Link to={`/${type}`} className="block text-sm hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded-md">
-              Solution 1
-            </Link>
-            <Link to={`/${type}`} className="block text-sm hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded-md">
-              Solution 2
-            </Link>
-          </ul>
-        </div>
-
-        {/* CTA */}
-        <div className="bg-gradient-to-br from-blue-600 to-indigo-900 text-white rounded-2xl p-8 flex flex-col items-center justify-center text-center">
-          <Icon size={36} className="mb-4" />
-          <h3 className="text-lg font-semibold mb-2">{data.title}</h3>
-          <p className="text-sm mb-4">{data.desc}</p>
-
-          <button className="bg-white text-blue-700 px-4 py-2 text-sm rounded-md flex items-center gap-2 hover:bg-gray-100">
-            <Download size={16} />
-            Download
-          </button>
-        </div>
-
       </div>
     </motion.div>
   );
